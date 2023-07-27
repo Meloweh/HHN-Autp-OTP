@@ -1,0 +1,45 @@
+{
+
+  "description": "Automatically redirects through the login page of the ILIAS page of the college HHN Heilbronn.",
+  "manifest_version": 2,
+  "name": "HHN Auto OTP",
+  "author": "Meloweh",
+  "version": "1.2",
+  "homepage_url": "https://github.com/Meloweh/HHN-Autp-OTP",
+  "icons": {
+    "60": "icons/beasts-48.png"
+  },
+
+  "permissions": [
+    "activeTab", "tabs", "cookies", "*://login.hs-heilbronn.de/*", "*://ilias.hs-heilbronn.de/*"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/beasts-32.png",
+    "theme_icons": [{
+        "light": "icons/beasts-32-light.png",
+        "dark": "icons/beasts-32.png",
+        "size": 32
+    }],
+    "default_title": "Auto Redirect",
+    "default_popup": "popup/popup.html"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "wurzelya@gmail.com"
+    }
+  },
+  "background": {
+    "scripts": ["dist/background.bundle.js"]
+  },
+  "content_scripts": [ 
+    {
+      "matches": ["*://login.hs-heilbronn.de/*", "*://ilias.hs-heilbronn.de/*"],
+      "js": ["dist/main.bundle.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    "beasts/*.jpg"
+  ]
+
+}
